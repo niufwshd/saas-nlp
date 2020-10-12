@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace WebApplication5.Controllers
 {
     /// <summary>
-    /// webapi 测试例子
+    /// webapi 测试钩子
     /// </summary>
     [ApiController]
     [Route("[controller]")]
