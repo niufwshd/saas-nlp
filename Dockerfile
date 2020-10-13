@@ -8,6 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["WebApplication5/WebApplication5.csproj", "WebApplication5/"]
+
 RUN dotnet restore "WebApplication5/WebApplication5.csproj"
 COPY . .
 WORKDIR "/src/WebApplication5"
@@ -18,5 +19,6 @@ RUN dotnet publish "WebApplication5.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
+COPY ["WebApplication5/WebApplication5.xml", "."]
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WebApplication5.dll"]
